@@ -1,41 +1,27 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const logger = require(`morgan`);
+const productController = require(`./product/controller`)
+const productRouterV2 = require(`./productv2/router`)
+const multer = require(`multer`);
+const upload = multer({ dest: `uploads`});
+const path = require(`path`);
+const cors = require(`cors`);
 
-// request/req adalah apa yang dikirimkan ke express
-// response/res adalah apa yang di kembalikan oleh express
-// ketentuan route adalah memanggil path dan 2 paramer / lebih.
-app.get(`/`, (req, res) => {
-    res.sendFile(`./navigasi.html`, {root: __dirname})
-})
+app.use(logger(`dev`));
 
-app.get('/about', (req, res) => {
-    // use teks biasa
-    res.send('Ini adalah halaman about')
-});
+// cruds Mysql
+app.get(`/product`, productController.index);
+app.get(`/product/:id`, productController.view);
+app.post(`/product/`, upload.single(`image`), productController.store);
+app.put(`/product/:id`, upload.single(`image`), productController.update);
+app.delete(`/product/:id`, upload.single(`image`), productController.destroy); 
 
-app.get('/contact', (req, res) => {
-    // use json
-    res.json({
-        nama: `Muhammad Yogi`,
-        email: `yogikgaek@gmail.com`,
-        noHp: `0882328637263726`,
-    })
-});
 
-app.get(`/portfolio`, (req, res) => {
-    // use send file  (mengambil isi dari file)
-    res.sendFile(`./index.html`, {root: __dirname});
-})
-
-// id akan berguna sebagai placeholder
-app.get(`/product/:id`, (req, res) => {
-    res.send(`Product ID :  ${req.params.id} <br> Category : ${req.query.category}`);
-})
-
-// use akan berjalan untuk request apapun
-// menjalankan middleware (middleware harus di letak dibawah routing karna express menjalankan operasi dari atas ke bawah).
-// Note : use di letak di atas route, request dibawah tidak akan berjalan.
+app.use(cors());
+app.use(`/api/v2`, productRouterV2);
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use(`/`, (req, res) => {
     res.status(404)
     // use tag html
@@ -43,5 +29,5 @@ app.use(`/`, (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`http://localhost:${port}`)
 });
