@@ -13,7 +13,7 @@ app.use(`/`, (req, res) => {
     res.send(`<h1> Page not found </h1>`); 
 });
 
-const server = app.listen(process.env.PORT || 4000, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
     const port = server.address().port;
     console.log(`http://localhost: ${port}`);
   });
