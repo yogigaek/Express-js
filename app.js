@@ -4,7 +4,7 @@ const getData = require(`./routes/router`);
 const path = require(`path`); 
 
 // Link api Express
-app.use(`/api/`, getData);
+app.use(`/home/`, getData);
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(`/`, (req, res) => {
