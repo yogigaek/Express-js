@@ -1,24 +1,24 @@
 Express API
 
-URL : "/api",
+URL : "/home",
 
 Method: "GET",
 
-Results: https://prnt.sc/XEapIl8gvMz4
+Results: https://prnt.sc/ZdK8ALRp33Dh
 
 =========================================
 
-URL :"/api/contact",
+URL :"/home/contact",
 
 Method:"GET",
 
-Results: https://prnt.sc/ggRRnMCyvdL_
+Results: https://prnt.sc/H9K2w-wjJ8M3
 
 =========================================
 
-URL :"/api/contact/id?",
-example : ""/api/contact/1"
+URL :"/home/contact/id?",
+example : ""/home/contact/1"
 
 Method:"GET",
 
-Results: https://prnt.sc/8eV_5ieVjRWl
+Results: https://prnt.sc/hLhwIHhgSh7V
