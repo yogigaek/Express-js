@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 4000;
 const getData = require(`./routes/router`);
 const path = require(`path`); 
 
@@ -14,6 +13,7 @@ app.use(`/`, (req, res) => {
     res.send(`<h1> Page not found </h1>`); 
 });
 
-app.listen(port, () => {
-    console.log(`http://localhost:${port}`)
+const server = app.listen(process.env.PORT || 4000, () => {
+    const port = server.address().port;
+    console.log(`http://localhost: ${port}`);
 });
