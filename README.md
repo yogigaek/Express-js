@@ -12,7 +12,7 @@ URL :"/api/contact",
 
 Method:"GET",
 
-PARAM: https://prnt.sc/ggRRnMCyvdL_
+Results: https://prnt.sc/ggRRnMCyvdL_
 
 =========================================
 
@@ -21,4 +21,4 @@ example : ""/api/contact/1"
 
 Method:"GET",
 
-PARAM: https://prnt.sc/8eV_5ieVjRWl
+Results: https://prnt.sc/8eV_5ieVjRWl
